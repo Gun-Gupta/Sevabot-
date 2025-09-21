@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Chat{% endblock %}
+
+{% block head_extra %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='home/home.css') }}">
+  <script src="{{ url_for('static', filename='home/home.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="app">
+    <!-- Header -->
+    <header>
+      <img src="" alt="Logo" class="logo" />
+      <div>
+        <h1>SevaBot</h1>
+        <small>
+          Capabilities: Book slots · Symptom-based diagnosis · 
+          Sentiment analysis · Appointments
+        </small>
+      </div>
+    </header>
+
+    <!-- Main layout -->
+    <div class="main">
+      <!-- Chat area -->
+      <div class="card">
+        <div class="chat" id="chat"></div>
+
+        <!-- Chat input -->
+        <div class="controls">
+          <input 
+            id="userInput" 
+            type="text" 
+            value="cold,fever"
+            placeholder="Type: 'book doctor', 'diagnose: fever,cough', 'show appointments'" 
+          />
+          <button id="sendBtn">Send</button>
+        </div>
+
+        <!-- Chat actions -->
+        <div class="chat-actions">
+          <button id="btnClear">Clear Chat</button>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="d-none sidebar">
+        <!-- Doctors & Slots -->
+        <div class="card">
+          <h2>Doctors & Slots</h2>
+          <select id="doctorSelect"></select>
+          <div class="list" id="slotsList"></div>
+          <button id="refreshSlots">Refresh Slots</button>
+        </div>
+
+        <!-- Booked Appointments -->
+        <div class="card">
+          <h2>Booked Appointments</h2>
+          <div id="appointmentsList"></div>
+          <div class="appointment-actions">
+            <button id="exportBtn">Export JSON</button>
+            <button id="clearBookings">Clear</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+</div>
+{% endblock %}
