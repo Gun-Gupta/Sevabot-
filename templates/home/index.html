@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Welcome{% endblock %}
+
+<!-- UI Will be created in block content -->
+{% block content %}
+    <style>
+        .suggestion_container {
+            height: 90vh;
+        }
+    </style>
+    <div class="container mt-3">
+        <div class="suggestion_container">
+            <!-- Create UI here of Doctor's card -->
+             <p class="text-center">No Doctors List.</p>
+        </div>
+        <form class="suggestion_bot_form">
+            <div class="row">
+                <div class="col-10">
+                    <input type="email" class="form-control" id="promptAi" placeholder="Tell us your problem!">
+                </div>
+                 <div class="col-2">
+                    <button type="button" class="btn btn-primary mb-3" onclick="recomment_docter_handler()" >Recommend Doctors</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        function recomment_docter_handler(){
+            alert("Button clicked")
+            // Call API POST /request {"symptoms": "I have headache & fever"}
+            // get result from API then, create bootstarp crads and appned  html in .suggestion_container
+        }
+    </script>
+{% endblock %}
