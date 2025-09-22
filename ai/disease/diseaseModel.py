@@ -1,7 +1,8 @@
 import joblib
 from nltk.stem.porter import PorterStemmer
 from sklearn.metrics.pairwise import cosine_similarity
-
+from nltk.corpus import stopwords
+stop_words = set(stopwords.words("english"))
 ps = PorterStemmer()
 data_path = "ai/disease/model_data.pkl"
 vectorizer_path = "ai/disease/vectorizer.pkl"
@@ -17,7 +18,10 @@ class DiseaseModel:
         return " ".join([ps.stem(w) for w in text.split()])
 
     def _preprocess_text(self, text):
-        return self._stem(text.lower().replace(" ", ""))
+        words = text.lower().split()
+        filtered = [w for w in words if w not in stop_words]
+        return self._stem(" ".join(filtered))
+
 
     def find_disease_by_symptoms(self, symptoms, min_score=0.1):
         symptoms = self._preprocess_text(symptoms)

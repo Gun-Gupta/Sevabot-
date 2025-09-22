@@ -339,8 +339,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === "Enter") sendBtn.click();
   });
 
-  document.getElementById("btnHelp").onclick = () => handleUserRaw("help");
-
   document.getElementById("btnClear").onclick = () => {
     chat.innerHTML = "";
     addBot("Chat cleared.");
@@ -375,5 +373,4 @@ document.addEventListener("DOMContentLoaded", function () {
   populateDoctors();
   renderSlots();
   renderAppointments();
-  addBot("Hi! I'm SevaBot How Can I Help You ?");
 });
